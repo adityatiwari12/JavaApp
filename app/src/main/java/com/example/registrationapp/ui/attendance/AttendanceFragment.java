@@ -59,13 +59,18 @@ public class AttendanceFragment extends Fragment {
         swipe.setOnRefreshListener(() -> vm.loadAttendanceStats());
         
         MaterialButton btn = view.findViewById(R.id.btnMarkAttendanceMain);
+        btn.setEnabled(false); // Disable until subjects loaded
+
+        vm.getSubjects().observe(getViewLifecycleOwner(), subjects -> {
+            if (subjects != null && !subjects.isEmpty()) {
+                btn.setEnabled(true);
+            }
+        });
         
         btn.setOnClickListener(v -> {
             List<Subject> subjects = vm.getSubjects().getValue();
             if (subjects != null && !subjects.isEmpty()) {
                 showMarkAttendanceDialog(subjects);
-            } else {
-                Toast.makeText(getContext(), "Loading subjects...", Toast.LENGTH_SHORT).show();
             }
         });
 

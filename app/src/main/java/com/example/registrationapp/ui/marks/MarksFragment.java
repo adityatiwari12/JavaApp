@@ -38,15 +38,24 @@ public class MarksFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(MarksViewModel.class);
         
+        MaterialButton btn1 = view.findViewById(R.id.btnLogMst1);
+        MaterialButton btn2 = view.findViewById(R.id.btnLogMst2);
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+
         vm.getSubjects().observe(getViewLifecycleOwner(), subjects -> {
             adapter.setSubjects(subjects);
+            if (subjects != null && !subjects.isEmpty()) {
+                btn1.setEnabled(true);
+                btn2.setEnabled(true);
+            }
         });
 
         vm.getAllMarks().observe(getViewLifecycleOwner(), marks -> {
             adapter.setMarks(marks);
         });
 
-        view.findViewById(R.id.btnLogMst1).setOnClickListener(v -> {
+        btn1.setOnClickListener(v -> {
             List<Subject> subjects = vm.getSubjects().getValue();
             if (subjects != null && !subjects.isEmpty()) {
                 BulkMarksDialogHelper.showBulkMarksDialog(getContext(), "MST-1", subjects, marks -> {
@@ -55,7 +64,7 @@ public class MarksFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.btnLogMst2).setOnClickListener(v -> {
+        btn2.setOnClickListener(v -> {
             List<Subject> subjects = vm.getSubjects().getValue();
             if (subjects != null && !subjects.isEmpty()) {
                 BulkMarksDialogHelper.showBulkMarksDialog(getContext(), "MST-2", subjects, marks -> {
