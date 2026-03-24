@@ -1,70 +1,66 @@
 [
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\fragment_home.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_announcement.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_announcement.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\activity_profile.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\activity_profile.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/activity_login.xml",
+        "source": "com.example.registrationapp-main-50:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\item_marks.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\item_marks.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/fragment_profile.xml",
+        "source": "com.example.registrationapp-main-50:/layout/fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\activity_home.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\activity_home.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/fragment_home.xml",
+        "source": "com.example.registrationapp-main-50:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\activity_main.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/fragment_leave.xml",
+        "source": "com.example.registrationapp-main-50:/layout/fragment_leave.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\fragment_attendance.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\fragment_attendance.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_leave.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_leave.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\item_attendance.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\item_attendance.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/fragment_marks.xml",
+        "source": "com.example.registrationapp-main-50:/layout/fragment_marks.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\dialog_add_marks.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\dialog_add_marks.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/activity_main.xml",
+        "source": "com.example.registrationapp-main-50:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\fragment_marks.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\fragment_marks.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/dialog_add_marks.xml",
+        "source": "com.example.registrationapp-main-50:/layout/dialog_add_marks.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\fragment_leave.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\fragment_leave.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_bulk_mark_entry.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_bulk_mark_entry.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\item_announcement.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\item_announcement.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/fragment_attendance.xml",
+        "source": "com.example.registrationapp-main-50:/layout/fragment_attendance.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\item_leave.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\item_leave.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/activity_dashboard.xml",
+        "source": "com.example.registrationapp-main-50:/layout/activity_dashboard.xml"
     },
     {
         "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/dialog_add_attendance.xml",
         "source": "com.example.registrationapp-main-50:/layout/dialog_add_attendance.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\fragment_profile.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\fragment_profile.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_attendance.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_attendance.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\activity_dashboard.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\activity_dashboard.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_class.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_class.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\item_class.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\item_class.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-mergeDebugResources-47:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.registrationapp-main-50:\\layout\\activity_login.xml"
+        "merged": "com.example.registrationapp-mergeDebugResources-47:/layout/item_marks.xml",
+        "source": "com.example.registrationapp-main-50:/layout/item_marks.xml"
     }
 ]

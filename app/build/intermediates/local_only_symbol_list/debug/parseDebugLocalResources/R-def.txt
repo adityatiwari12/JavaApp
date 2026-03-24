@@ -15,8 +15,11 @@ drawable circle_background
 drawable logo
 id bottom_nav
 id btnApplyLeave
+id btnLogMst1
+id btnLogMst2
 id btnLogin
 id btnLogout
+id btnMarkAttendanceMain
 id btnRegister
 id cardApplyLeave
 id cardMarkAttendance
@@ -37,8 +40,7 @@ id editMaxMarks
 id editObtainedMarks
 id editPassword
 id editPhone
-id fabAddMarks
-id fabMarkAttendance
+id etMarksBulk
 id imgLogo
 id nav_attendance
 id nav_graph
@@ -99,6 +101,7 @@ id textRegisterRedirect
 id textSubjectCount
 id textSubjectName
 id textWelcomeName
+id txtSubjectNameBulk
 id viewPriority
 layout activity_dashboard
 layout activity_login
@@ -112,6 +115,7 @@ layout fragment_marks
 layout fragment_profile
 layout item_announcement
 layout item_attendance
+layout item_bulk_mark_entry
 layout item_class
 layout item_leave
 layout item_marks

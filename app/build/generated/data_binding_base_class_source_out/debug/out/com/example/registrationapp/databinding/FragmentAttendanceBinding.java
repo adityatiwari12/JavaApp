@@ -4,25 +4,25 @@ package com.example.registrationapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.registrationapp.R;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentAttendanceBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
-  public final ExtendedFloatingActionButton fabMarkAttendance;
+  public final MaterialButton btnMarkAttendanceMain;
 
   @NonNull
   public final RecyclerView recyclerAttendance;
@@ -30,19 +30,18 @@ public final class FragmentAttendanceBinding implements ViewBinding {
   @NonNull
   public final SwipeRefreshLayout swipeRefreshAttendance;
 
-  private FragmentAttendanceBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ExtendedFloatingActionButton fabMarkAttendance,
-      @NonNull RecyclerView recyclerAttendance,
+  private FragmentAttendanceBinding(@NonNull LinearLayout rootView,
+      @NonNull MaterialButton btnMarkAttendanceMain, @NonNull RecyclerView recyclerAttendance,
       @NonNull SwipeRefreshLayout swipeRefreshAttendance) {
     this.rootView = rootView;
-    this.fabMarkAttendance = fabMarkAttendance;
+    this.btnMarkAttendanceMain = btnMarkAttendanceMain;
     this.recyclerAttendance = recyclerAttendance;
     this.swipeRefreshAttendance = swipeRefreshAttendance;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -67,9 +66,9 @@ public final class FragmentAttendanceBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.fabMarkAttendance;
-      ExtendedFloatingActionButton fabMarkAttendance = ViewBindings.findChildViewById(rootView, id);
-      if (fabMarkAttendance == null) {
+      id = R.id.btnMarkAttendanceMain;
+      MaterialButton btnMarkAttendanceMain = ViewBindings.findChildViewById(rootView, id);
+      if (btnMarkAttendanceMain == null) {
         break missingId;
       }
 
@@ -85,7 +84,7 @@ public final class FragmentAttendanceBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAttendanceBinding((CoordinatorLayout) rootView, fabMarkAttendance,
+      return new FragmentAttendanceBinding((LinearLayout) rootView, btnMarkAttendanceMain,
           recyclerAttendance, swipeRefreshAttendance);
     }
     String missingId = rootView.getResources().getResourceName(id);

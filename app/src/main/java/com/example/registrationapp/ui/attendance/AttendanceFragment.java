@@ -23,6 +23,7 @@ import com.example.registrationapp.data.entity.AttendanceRecord;
 import com.example.registrationapp.data.entity.Subject;
 import com.example.registrationapp.ui.adapter.AttendanceAdapter;
 import com.example.registrationapp.utils.DateUtils;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -45,7 +46,6 @@ public class AttendanceFragment extends Fragment {
 
         RecyclerView recycler = view.findViewById(R.id.recyclerAttendance);
         SwipeRefreshLayout swipe = view.findViewById(R.id.swipeRefreshAttendance);
-        ExtendedFloatingActionButton fab = view.findViewById(R.id.fabMarkAttendance);
 
         adapter = new AttendanceAdapter();
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -58,7 +58,9 @@ public class AttendanceFragment extends Fragment {
 
         swipe.setOnRefreshListener(() -> vm.loadAttendanceStats());
         
-        fab.setOnClickListener(v -> {
+        MaterialButton btn = view.findViewById(R.id.btnMarkAttendanceMain);
+        
+        btn.setOnClickListener(v -> {
             List<Subject> subjects = vm.getSubjects().getValue();
             if (subjects != null && !subjects.isEmpty()) {
                 showMarkAttendanceDialog(subjects);

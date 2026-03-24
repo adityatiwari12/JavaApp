@@ -4,38 +4,42 @@ package com.example.registrationapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.registrationapp.R;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentMarksBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
-  public final ExtendedFloatingActionButton fabAddMarks;
+  public final MaterialButton btnLogMst1;
+
+  @NonNull
+  public final MaterialButton btnLogMst2;
 
   @NonNull
   public final RecyclerView recyclerMarks;
 
-  private FragmentMarksBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ExtendedFloatingActionButton fabAddMarks, @NonNull RecyclerView recyclerMarks) {
+  private FragmentMarksBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnLogMst1,
+      @NonNull MaterialButton btnLogMst2, @NonNull RecyclerView recyclerMarks) {
     this.rootView = rootView;
-    this.fabAddMarks = fabAddMarks;
+    this.btnLogMst1 = btnLogMst1;
+    this.btnLogMst2 = btnLogMst2;
     this.recyclerMarks = recyclerMarks;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -60,9 +64,15 @@ public final class FragmentMarksBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.fabAddMarks;
-      ExtendedFloatingActionButton fabAddMarks = ViewBindings.findChildViewById(rootView, id);
-      if (fabAddMarks == null) {
+      id = R.id.btnLogMst1;
+      MaterialButton btnLogMst1 = ViewBindings.findChildViewById(rootView, id);
+      if (btnLogMst1 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnLogMst2;
+      MaterialButton btnLogMst2 = ViewBindings.findChildViewById(rootView, id);
+      if (btnLogMst2 == null) {
         break missingId;
       }
 
@@ -72,7 +82,8 @@ public final class FragmentMarksBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMarksBinding((CoordinatorLayout) rootView, fabAddMarks, recyclerMarks);
+      return new FragmentMarksBinding((LinearLayout) rootView, btnLogMst1, btnLogMst2,
+          recyclerMarks);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

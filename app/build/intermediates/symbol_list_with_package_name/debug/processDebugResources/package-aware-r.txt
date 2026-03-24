@@ -3253,8 +3253,11 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btnApplyLeave
+id btnLogMst1
+id btnLogMst2
 id btnLogin
 id btnLogout
+id btnMarkAttendanceMain
 id btnRegister
 id buttonPanel
 id cache_measures
@@ -3357,11 +3360,10 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etMarksBulk
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fabAddMarks
-id fabMarkAttendance
 id fade
 id fill
 id fill_horizontal
@@ -3725,6 +3727,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txtSubjectNameBulk
 id unchecked
 id uniform
 id unlabeled
@@ -3894,6 +3897,7 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_announcement
 layout item_attendance
+layout item_bulk_mark_entry
 layout item_class
 layout item_leave
 layout item_marks

@@ -14,15 +14,13 @@ import com.example.registrationapp.R;
 import com.example.registrationapp.data.entity.MstMark;
 import com.example.registrationapp.data.entity.Subject;
 import com.example.registrationapp.ui.adapter.MarksAdapter;
-
+import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MarksFragment extends Fragment {
     private MarksViewModel vm;
     private MarksAdapter adapter;
-    private List<Subject> cachedSubjects = new ArrayList<>();
-    private List<MstMark> cachedMarks = new ArrayList<>();
 
     @Nullable @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c, @Nullable Bundle s) {
@@ -48,14 +46,21 @@ public class MarksFragment extends Fragment {
             adapter.setMarks(marks);
         });
 
-        view.findViewById(R.id.fabAddMarks).setOnClickListener(v -> {
+        view.findViewById(R.id.btnLogMst1).setOnClickListener(v -> {
             List<Subject> subjects = vm.getSubjects().getValue();
             if (subjects != null && !subjects.isEmpty()) {
-                MarksDialogHelper.showAddMarksDialog(getContext(), subjects, mark -> {
-                    vm.saveMark(mark);
+                BulkMarksDialogHelper.showBulkMarksDialog(getContext(), "MST-1", subjects, marks -> {
+                    vm.saveMarks(marks);
                 });
-            } else {
-                android.widget.Toast.makeText(getContext(), "Loading subjects...", android.widget.Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        view.findViewById(R.id.btnLogMst2).setOnClickListener(v -> {
+            List<Subject> subjects = vm.getSubjects().getValue();
+            if (subjects != null && !subjects.isEmpty()) {
+                BulkMarksDialogHelper.showBulkMarksDialog(getContext(), "MST-2", subjects, marks -> {
+                    vm.saveMarks(marks);
+                });
             }
         });
     }

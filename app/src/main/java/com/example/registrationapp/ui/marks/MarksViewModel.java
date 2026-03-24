@@ -34,6 +34,14 @@ public class MarksViewModel extends AndroidViewModel {
         });
     }
 
+    public void saveMarks(List<MstMark> marks) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            for (MstMark m : marks) {
+                repo.insertMark(m);
+            }
+        });
+    }
+
     public void loadMarks() {
         // Marks are already loaded via LiveData allMarks
     }
