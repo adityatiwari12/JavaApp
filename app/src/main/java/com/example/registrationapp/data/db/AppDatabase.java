@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Subject.class, AttendanceRecord.class, LeaveRequest.class,
-        MstMark.class, Announcement.class, TimetableEntry.class}, version = 3, exportSchema = false)
+        MstMark.class, Announcement.class, TimetableEntry.class}, version = 5, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
@@ -57,7 +57,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             // seedMarks(database);
                             seedAnnouncements(database);
                             seedTimetable(database);
-                            seedLeaves(database);
+                            // seedLeaves(database);
                         }
                     }
                 } catch (InterruptedException e) {

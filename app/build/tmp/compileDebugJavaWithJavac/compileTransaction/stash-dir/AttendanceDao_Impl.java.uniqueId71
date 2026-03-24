@@ -334,7 +334,7 @@ public final class AttendanceDao_Impl implements AttendanceDao {
 
   @Override
   public int getAttendedCount(final int subjectId) {
-    final String _sql = "SELECT COUNT(*) FROM attendance_records WHERE subjectId = ? AND (status = 'PRESENT' OR status = 'CANCELLED')";
+    final String _sql = "SELECT COUNT(*) FROM attendance_records WHERE subjectId = ? AND status = 'PRESENT'";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindLong(_argIndex, subjectId);
@@ -356,7 +356,7 @@ public final class AttendanceDao_Impl implements AttendanceDao {
 
   @Override
   public int getConductedCount(final int subjectId) {
-    final String _sql = "SELECT COUNT(*) FROM attendance_records WHERE subjectId = ? AND status != 'CANCELLED'";
+    final String _sql = "SELECT COUNT(*) FROM attendance_records WHERE subjectId = ? AND (status = 'PRESENT' OR status = 'ABSENT')";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindLong(_argIndex, subjectId);

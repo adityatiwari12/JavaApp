@@ -25,6 +25,7 @@ import com.example.registrationapp.ui.adapter.AttendanceAdapter;
 import com.example.registrationapp.utils.DateUtils;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -56,81 +57,55 @@ public class AttendanceFragment extends Fragment {
         });
 
         swipe.setOnRefreshListener(() -> vm.loadAttendanceStats());
-        fab.setOnClickListener(v -> showMarkAttendanceDialog());
+        
+        fab.setOnClickListener(v -> {
+            List<Subject> subjects = vm.getSubjects().getValue();
+            if (subjects != null && !subjects.isEmpty()) {
+                showMarkAttendanceDialog(subjects);
+            } else {
+                Toast.makeText(getContext(), "Loading subjects...", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         vm.loadAttendanceStats();
     }
 
-    private void showMarkAttendanceDialog() {
-        vm.getSubjects().observe(getViewLifecycleOwner(), subjects -> {
-            if (subjects == null || subjects.isEmpty()) {
-                Toast.makeText(getContext(), "No subjects found", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            // Remove observer after first call
-            vm.getSubjects().removeObservers(getViewLifecycleOwner());
-
-            // Get already marked subjects for today
-            vm.loadTodayRecords();
-            vm.getTodayRecords().observe(getViewLifecycleOwner(), todayRecs -> {
-                vm.getTodayRecords().removeObservers(getViewLifecycleOwner());
-
-                Set<Integer> markedIds = new HashSet<>();
-                if (todayRecs != null) {
-                    for (AttendanceRecord r : todayRecs) markedIds.add(r.subjectId);
-                }
-
-                showSubjectListDialog(subjects, markedIds);
-            });
-        });
-    }
-
-    private void showSubjectListDialog(List<Subject> subjects, Set<Integer> alreadyMarked) {
+    private void showMarkAttendanceDialog(List<Subject> subjects) {
         String today = DateUtils.formatForDisplay(DateUtils.getTodayDb());
+        
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_attendance, null);
+        com.google.android.material.textfield.MaterialAutoCompleteTextView spinner = dialogView.findViewById(R.id.spinnerSubjectAttendance);
+        RadioGroup rg = dialogView.findViewById(R.id.rgStatus);
 
-        LinearLayout layout = new LinearLayout(getContext());
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(48, 32, 48, 16);
-
-        for (Subject sub : subjects) {
-            TextView label = new TextView(getContext());
-            label.setText(sub.name + (alreadyMarked.contains(sub.id) ? " ✓" : ""));
-            label.setTextSize(16);
-            label.setPadding(0, 16, 0, 8);
-            layout.addView(label);
-
-            RadioGroup rg = new RadioGroup(getContext());
-            rg.setOrientation(RadioGroup.HORIZONTAL);
-            rg.setTag(sub.id);
-
-            String[] labels = {"Present", "Absent", "Cancelled"};
-            String[] values = {"PRESENT", "ABSENT", "CANCELLED"};
-            for (int i = 0; i < 3; i++) {
-                RadioButton rb = new RadioButton(getContext());
-                rb.setText(labels[i]);
-                rb.setTag(values[i]);
-                rg.addView(rb);
-            }
-            layout.addView(rg);
-        }
+        List<String> subNames = new ArrayList<>();
+        for (Subject s : subjects) subNames.add(s.name);
+        spinner.setAdapter(new android.widget.ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, subNames));
 
         new AlertDialog.Builder(getContext())
                 .setTitle("Mark Attendance — " + today)
-                .setView(layout)
+                .setView(dialogView)
                 .setPositiveButton("Save", (dialog, which) -> {
-                    for (int i = 0; i < layout.getChildCount(); i++) {
-                        View child = layout.getChildAt(i);
-                        if (child instanceof RadioGroup) {
-                            RadioGroup rg = (RadioGroup) child;
-                            int subId = (int) rg.getTag();
-                            int checkedId = rg.getCheckedRadioButtonId();
-                            if (checkedId != -1) {
-                                RadioButton rb = rg.findViewById(checkedId);
-                                vm.markAttendance(subId, rb.getTag().toString());
+                    String subName = spinner.getText().toString();
+                    int checkedId = rg.getCheckedRadioButtonId();
+                    
+                    if (!subName.isEmpty() && checkedId != -1) {
+                        int subId = -1;
+                        for (Subject s : subjects) {
+                            if (s.name.equals(subName)) {
+                                subId = s.id;
+                                break;
                             }
                         }
+                        
+                        if (subId != -1) {
+                            String status = "PRESENT";
+                            if (checkedId == R.id.rbAbsent) status = "ABSENT";
+                            else if (checkedId == R.id.rbCancelled) status = "CANCELLED";
+                            
+                            vm.markAttendance(subId, status);
+                            Toast.makeText(getContext(), "Attendance saved!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    Toast.makeText(getContext(), "Attendance saved!", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancel", null)
                 .show();

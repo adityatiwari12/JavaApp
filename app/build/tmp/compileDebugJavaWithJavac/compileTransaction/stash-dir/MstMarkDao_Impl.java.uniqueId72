@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -28,13 +29,15 @@ public final class MstMarkDao_Impl implements MstMarkDao {
 
   private final EntityInsertionAdapter<MstMark> __insertionAdapterOfMstMark;
 
+  private final SharedSQLiteStatement __preparedStmtOfDeleteMark;
+
   public MstMarkDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfMstMark = new EntityInsertionAdapter<MstMark>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `mst_marks` (`id`,`subjectId`,`examName`,`marksObtained`,`maxMarks`) VALUES (nullif(?, 0),?,?,?,?)";
+        return "INSERT OR REPLACE INTO `mst_marks` (`id`,`subjectId`,`examName`,`marksObtained`,`maxMarks`) VALUES (nullif(?, 0),?,?,?,?)";
       }
 
       @Override
@@ -50,6 +53,14 @@ public final class MstMarkDao_Impl implements MstMarkDao {
         statement.bindLong(5, entity.maxMarks);
       }
     };
+    this.__preparedStmtOfDeleteMark = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM mst_marks WHERE subjectId = ? AND examName = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -62,6 +73,77 @@ public final class MstMarkDao_Impl implements MstMarkDao {
       return _result;
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void deleteMark(final int subjectId, final String examName) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteMark.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, subjectId);
+    _argIndex = 2;
+    if (examName == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, examName);
+    }
+    try {
+      __db.beginTransaction();
+      try {
+        _stmt.executeUpdateDelete();
+        __db.setTransactionSuccessful();
+      } finally {
+        __db.endTransaction();
+      }
+    } finally {
+      __preparedStmtOfDeleteMark.release(_stmt);
+    }
+  }
+
+  @Override
+  public MstMark getMarkSync(final int subjectId, final String examName) {
+    final String _sql = "SELECT * FROM mst_marks WHERE subjectId = ? AND examName = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, subjectId);
+    _argIndex = 2;
+    if (examName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, examName);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfSubjectId = CursorUtil.getColumnIndexOrThrow(_cursor, "subjectId");
+      final int _cursorIndexOfExamName = CursorUtil.getColumnIndexOrThrow(_cursor, "examName");
+      final int _cursorIndexOfMarksObtained = CursorUtil.getColumnIndexOrThrow(_cursor, "marksObtained");
+      final int _cursorIndexOfMaxMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "maxMarks");
+      final MstMark _result;
+      if (_cursor.moveToFirst()) {
+        final int _tmpSubjectId;
+        _tmpSubjectId = _cursor.getInt(_cursorIndexOfSubjectId);
+        final String _tmpExamName;
+        if (_cursor.isNull(_cursorIndexOfExamName)) {
+          _tmpExamName = null;
+        } else {
+          _tmpExamName = _cursor.getString(_cursorIndexOfExamName);
+        }
+        final int _tmpMarksObtained;
+        _tmpMarksObtained = _cursor.getInt(_cursorIndexOfMarksObtained);
+        final int _tmpMaxMarks;
+        _tmpMaxMarks = _cursor.getInt(_cursorIndexOfMaxMarks);
+        _result = new MstMark(_tmpSubjectId,_tmpExamName,_tmpMarksObtained,_tmpMaxMarks);
+        _result.id = _cursor.getInt(_cursorIndexOfId);
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
     }
   }
 

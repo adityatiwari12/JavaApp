@@ -42,17 +42,21 @@ public class MarksFragment extends Fragment {
         
         vm.getSubjects().observe(getViewLifecycleOwner(), subjects -> {
             adapter.setSubjects(subjects);
-            
-            // Set up FAB click listener only when subjects are available
-            view.findViewById(R.id.fabAddMarks).setOnClickListener(v -> {
-                MarksDialogHelper.showAddMarksDialog(getContext(), subjects, mark -> {
-                    vm.saveMark(mark);
-                });
-            });
         });
 
         vm.getAllMarks().observe(getViewLifecycleOwner(), marks -> {
             adapter.setMarks(marks);
+        });
+
+        view.findViewById(R.id.fabAddMarks).setOnClickListener(v -> {
+            List<Subject> subjects = vm.getSubjects().getValue();
+            if (subjects != null && !subjects.isEmpty()) {
+                MarksDialogHelper.showAddMarksDialog(getContext(), subjects, mark -> {
+                    vm.saveMark(mark);
+                });
+            } else {
+                android.widget.Toast.makeText(getContext(), "Loading subjects...", android.widget.Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

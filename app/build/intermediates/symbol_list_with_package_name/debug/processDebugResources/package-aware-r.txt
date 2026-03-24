@@ -3557,6 +3557,9 @@ id radioGenderGroup
 id radioMale
 id radioOther
 id ratio
+id rbAbsent
+id rbCancelled
+id rbPresent
 id rectangles
 id recyclerAnnouncements
 id recyclerAttendance
@@ -3565,6 +3568,7 @@ id recyclerMarks
 id recyclerTodayClasses
 id report_drawn
 id reverseSawtooth
+id rgStatus
 id right
 id rightToLeft
 id right_icon
@@ -3616,6 +3620,7 @@ id spacer
 id special_effects_controller_view_tag
 id spinnerCountry
 id spinnerMstType
+id spinnerSubjectAttendance
 id spinnerSubjectMarks
 id spline
 id split_action_bar
@@ -3878,6 +3883,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_add_attendance
 layout dialog_add_marks
 layout fragment_attendance
 layout fragment_home

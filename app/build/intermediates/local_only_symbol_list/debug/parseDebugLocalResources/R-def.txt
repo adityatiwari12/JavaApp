@@ -53,13 +53,18 @@ id radioFemale
 id radioGenderGroup
 id radioMale
 id radioOther
+id rbAbsent
+id rbCancelled
+id rbPresent
 id recyclerAnnouncements
 id recyclerAttendance
 id recyclerLeaves
 id recyclerMarks
 id recyclerTodayClasses
+id rgStatus
 id spinnerCountry
 id spinnerMstType
+id spinnerSubjectAttendance
 id spinnerSubjectMarks
 id swipeRefresh
 id swipeRefreshAttendance
@@ -98,6 +103,7 @@ id viewPriority
 layout activity_dashboard
 layout activity_login
 layout activity_main
+layout dialog_add_attendance
 layout dialog_add_marks
 layout fragment_attendance
 layout fragment_home

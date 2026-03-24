@@ -23,7 +23,7 @@
     <color name="teal_700">#018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="agree_terms">I agree to the Terms and Conditions</string>
-    <string name="app_name">CSIT AITR Portal</string>
+    <string name="app_name">Student Register Portal</string>
     <string name="country">Country</string>
     <string name="dob">Date of Birth</string>
     <string name="email">Email Address</string>
